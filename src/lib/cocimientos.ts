@@ -144,7 +144,7 @@ export function generateTasks(today: Date, daysBefore = 10, daysAfter = 24): Tas
           status,
           frequency: rule.frequency,
           responsible: rule.responsible,
-          completedAt: status === "completada" ? isoAt(day, hour) : undefined,
+          ...(status === "completada" ? { completedAt: isoAt(day, hour) } : {}),
         });
       }
     }
